@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Form, redirect, useNavigation, useActionData } from "react-router-dom";
+import { createOrder } from "../../services/apiRestaurant";
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
@@ -31,6 +33,11 @@ const fakeCart = [
 ];
 
 function CreateOrder() {
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
+
+  const formErrors = useActionData();
+
   // const [withPriority, setWithPriority] = useState(false);
   const cart = fakeCart;
 
@@ -38,7 +45,7 @@ function CreateOrder() {
     <div>
       <h2>Ready to order? Let's go!</h2>
 
-      <form>
+      <Form method="POST" action="/order/new">
         <div>
           <label>First Name</label>
           <input type="text" name="customer" required />
@@ -49,6 +56,7 @@ function CreateOrder() {
           <div>
             <input type="tel" name="phone" required />
           </div>
+          {formErrors?.phone && <p>{formErrors.phone}</p>}
         </div>
 
         <div>
@@ -70,11 +78,39 @@ function CreateOrder() {
         </div>
 
         <div>
-          <button>Order now</button>
+          <input type="hidden" name="cart" value={JSON.stringify(cart)} />
+          <button disabled={isSubmitting}>
+            {isSubmitting ? "Placing Order" : "Order now"}
+          </button>
         </div>
-      </form>
+      </Form>
     </div>
   );
+}
+
+export async function action({ request }) {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+  console.log(data);
+
+  const order = {
+    ...data,
+    cart: JSON.parse(data.cart),
+    priority: data.priority === "on",
+  };
+
+  console.log(order);
+
+  const newOrder = await createOrder(order);
+
+  const errors = {};
+  if (!isValidPhone(order.phone))
+    errors.phone =
+      "Please enter a valid phone number. We might need to contact you about your order.";
+  if (Object.keys(errors).length > 0) return errors;
+
+  // if all good, redirect to the order page
+  return redirect(`/order/${newOrder.id}`);
 }
 
 export default CreateOrder;
