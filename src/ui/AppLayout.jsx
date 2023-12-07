@@ -10,11 +10,11 @@ function AppLayout() {
   return (
     <div className="grid h-screen grid-rows-[auto_1fr_auto]  gap-4">
       {isLoading && <IsLoading />}
+      {/* {true && <IsLoading />} */}
 
       <Header />
       <div className="overflow-scroll">
         <main className="mx-auto max-w-3xl">
-          <h1>Content</h1>
           <Outlet />
         </main>
       </div>
