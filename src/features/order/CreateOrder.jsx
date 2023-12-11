@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Form, redirect, useNavigation, useActionData } from "react-router-dom";
-import { createOrder } from "../../services/apiRestaurant";
-import Button from "../../ui/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart, getCartItems, getTotalCartPrice } from "../cart/cartSlice";
-import EmptyCart from "../cart/EmptyCart";
-import store from "../../store";
-import { formatCurrency } from "../../utils/helpers";
 import { fetchAddress } from "../user/userSlice";
+import store from "../../store";
+import { createOrder } from "../../services/apiRestaurant";
+import Button from "../../ui/Button";
+import EmptyCart from "../cart/EmptyCart";
+import { formatCurrency } from "../../utils/helpers";
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
@@ -140,15 +140,12 @@ function CreateOrder() {
 export async function action({ request }) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
-  console.log(data);
 
   const order = {
     ...data,
     cart: JSON.parse(data.cart),
     priority: data.priority === "true",
   };
-
-  console.log(order);
 
   const newOrder = await createOrder(order);
 
@@ -158,7 +155,7 @@ export async function action({ request }) {
       "Please enter a valid phone number. We might need to contact you about your order.";
   if (Object.keys(errors).length > 0) return errors;
 
-  // Do not overuse, might create performance issues
+  // Not to overuse, might create performance issues
   store.dispatch(clearCart());
 
   // if all good, redirect to the order page
