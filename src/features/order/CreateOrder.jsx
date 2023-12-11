@@ -163,7 +163,6 @@ export async function action({ request }) {
 
   // if all good, redirect to the order page
   return redirect(`/order/${newOrder.id}`);
-
 }
 
 export default CreateOrder;
