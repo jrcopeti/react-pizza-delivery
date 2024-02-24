@@ -7,7 +7,7 @@ function Error() {
 
   if (error.statusText) {
     return (
-      <div className="border-b border-stone-500  bg-yellow-400 px-4 py-3 text-center text-xl ">
+      <div className="border-b border-stone-500  bg-amber-500 px-4 py-3 text-center text-xl ">
         <h1>Something went wrong 😢</h1>
         <p>Error: {error.statusText}</p>
         <LinkButton to="-1">&larr; Go back</LinkButton>
