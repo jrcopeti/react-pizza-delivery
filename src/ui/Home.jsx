@@ -8,11 +8,11 @@ function Home() {
   const backgroundImageUrl = "src/assets/pizza-delivery-homepage.jpg";
 
   return (
-    <div className="mx-4 my-10 space-y-4 rounded bg-slate-100/80 p-5 text-center sm:my-16 sm:space-y-6 ">
+    <div className="mx-4 my-10 space-y-4 rounded-md bg-slate-100/80 p-5 text-center sm:my-16 sm:space-y-6 ">
       <img
         src={backgroundImageUrl}
         alt="Pizza delivery"
-        className="absolute inset-0 -z-10 h-full w-full object-cover opacity-100"
+        className="absolute inset-0 -z-10 h-full w-full object-cover"
       />
 
       <h1 className="text-center text-xl font-semibold md:text-3xl">

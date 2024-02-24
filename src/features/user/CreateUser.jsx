@@ -7,21 +7,20 @@ import Button from "../../ui/Button";
 function CreateUser() {
   const [username, setUsername] = useState("");
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    if(!username) return;
-    dispatch(updateName(username))
-    navigate('/menu')
-
+    if (!username) return;
+    dispatch(updateName(username));
+    navigate("/menu");
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <p className="mb-4 text-sm text-stone-600 md:text-base">
-        👋 Welcome! Please start by telling us your name:
+        Welcome! Please start by telling us your name:
       </p>
 
       <input
@@ -29,7 +28,7 @@ function CreateUser() {
         placeholder="Your full name"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
-        className="input mb-8 w-72"
+        className="input mb-8 w-72 focus:ring focus:ring-amber-400 "
       />
 
       {username !== "" && (
