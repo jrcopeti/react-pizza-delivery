@@ -43,7 +43,7 @@ function Order() {
     try {
       await navigator.clipboard.writeText(id.toString());
       setIsCopied(true);
-      setTimeout(() => setIsCopied(false), 5000); // Reset after 2 seconds
+      setTimeout(() => setIsCopied(false), 5000); 
     } catch (err) {
       console.error("Failed to copy", err);
     }

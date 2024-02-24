@@ -1,8 +1,23 @@
-# React + Vite
+# Pizza Delivery Co.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to Pizza Delivery Co., a web application delivering a seamless pizza ordering experience.
 
-Currently, two official plugins are available:
+Built in React, the goal of this project is to practice Redux as a state management tool. React Query for create seamless page transitions and API integration as well.
+Tailwind CSS is used for styling the application
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+From menu browsing to real-time delivery tracking, We've got it all covered.
+
+## Features
+
+- **Menu Browsing**: Explore our diverse pizza menu with detailed descriptions and pricing.
+- **Cart Management**: Add your favorite pizzas to the cart and adjust quantities as you see fit.
+- **Order Placement**: Place your pizza orders with just a few clicks.
+- **Priority Orders**: Make a priority delivery to receive your pizzas ASAP.
+- **Delivery Status**: Stay updated with the live status of your delivery.
+
+## Tech Stack
+
+- **React**
+- **React Router**: Manages in-app routing, enabling navigation without page reloads. Also used for fetching data from the pizza API through dynamic routes.
+- **Redux**: To manage the application state and make it globally accessible.
+- **Tailwind CSS**: A utility-first CSS framework for creating custom designs quickly.
