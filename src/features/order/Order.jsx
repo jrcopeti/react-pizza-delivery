@@ -23,7 +23,7 @@ function Order() {
     [fetcher],
   );
 
-  // Everyone can search for all orders, so for privacy reasons we're gonna gonna exclude names or address, these are only for the restaurant staff
+  // Everyone can search for all orders, so for privacy reasons it's exclude names or address, these are only for the restaurant staff
   const {
     id,
     status,
@@ -32,15 +32,17 @@ function Order() {
     orderPrice,
     estimatedDelivery,
     cart,
+    customer,
   } = order;
+
   const deliveryIn = calcMinutesLeft(estimatedDelivery);
 
   return (
-    <div className="p-x space-y-8 py-6 ">
-      <div className="intem-center flex flex-wrap justify-between gap-2">
-        <h2 className="text-xl font-semibold">Order #{id} status</h2>
+    <div className=" space-y-6 px-5 py-4 sm:space-y-4 ">
+      <div className="item-center flex flex-wrap justify-between gap-2 sm:space-x-6">
+        <h2 className="text-xl font-semibold">Order {id}</h2>
 
-        <div className="space-x-2">
+        <div className="space-x-2 mt-3 ">
           {priority && (
             <span className="rounded-full bg-red-500 px-3 py-1 text-sm font-semibold uppercase tracking-wide text-red-50 ">
               Priority
@@ -51,6 +53,11 @@ function Order() {
           </span>
         </div>
       </div>
+
+      <h3 className="text-l font-medium">
+        <span className="font-semibold">Customer</span>{" "}
+        {customer}
+      </h3>
 
       <div className="flex flex-wrap items-center justify-between gap-2 bg-stone-200 px-6 py-5">
         <p className="font-medium">
