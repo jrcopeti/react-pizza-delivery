@@ -43,7 +43,7 @@ function Order() {
     try {
       await navigator.clipboard.writeText(id.toString());
       setIsCopied(true);
-      setTimeout(() => setIsCopied(false), 5000); 
+      setTimeout(() => setIsCopied(false), 5000);
     } catch (err) {
       console.error("Failed to copy", err);
     }
@@ -52,7 +52,7 @@ function Order() {
   return (
     <div className=" space-y-6 px-5 py-4 sm:space-y-4 ">
       <div className="flex flex-wrap items-baseline justify-between gap-2 sm:space-x-6">
-        <h2 className="text-xl font-semibold">Order {id}</h2>
+        <h2 className="text-xl font-semibold">Order # {id}</h2>
         <Button
           onClick={handleCopyToClipboard}
           type={!isCopied ? "small" : "disabled"}
