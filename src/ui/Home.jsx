@@ -14,7 +14,7 @@ function Home() {
         alt="Pizza delivery"
         className="absolute inset-0 -z-10 h-full w-full object-cover "
       />
-      <div className="  m-5 space-y-4 rounded-md bg-amber-50/30 p-6 text-center sm:mb-8 sm:mt-8 sm:space-y-6 ">
+      <div className="  m-5 space-y-4 rounded-md bg-amber-50/40 p-6 text-center sm:mb-8 sm:mt-8 sm:space-y-6 ">
         <h1 className="  text-xl tracking-widest md:text-3xl ">
           <span className=" rounded-md bg-amber-200/70 p-2 font-extrabold  ">
             Pizza Delivery Co.
