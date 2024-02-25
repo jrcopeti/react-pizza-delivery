@@ -5,7 +5,7 @@ import Button from "./Button";
 function Home() {
   const username = useSelector((state) => state.user.username);
 
-  const backgroundImageUrl = "/public/pizza-delivery-homepage.jpg";
+  const backgroundImageUrl = "/pizza-delivery-homepage.jpg";
 
   return (
     <>
