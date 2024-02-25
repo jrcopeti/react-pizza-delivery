@@ -39,7 +39,7 @@ function CreateOrder() {
 
   const cart = useSelector(getCartItems);
   const totalCartPrice = useSelector(getTotalCartPrice);
-  
+
   const priorityPrice = withPriority ? totalCartPrice * 0.2 : 0;
   const totalPrice = totalCartPrice + priorityPrice;
 
@@ -51,7 +51,7 @@ function CreateOrder() {
 
       <Form method="POST" action="/order/new">
         <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center ">
-          <label className="sm:basis-40">First Name</label>
+          <label className="sm:basis-40 ">First Name</label>
           <input
             className="input grow"
             type="text"

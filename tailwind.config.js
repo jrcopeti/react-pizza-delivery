@@ -9,6 +9,7 @@ export default {
       height: {
         screen: "100dvh",
       }
+      
     },
   },
   plugins: [],

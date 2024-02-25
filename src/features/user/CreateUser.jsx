@@ -28,7 +28,7 @@ function CreateUser() {
         placeholder="Enter your name"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
-        className="input mb-8 w-72 focus:ring focus:ring-amber-400 "
+        className="input mb-8 w-72 focus:ring focus:ring-amber-400 text-base" 
       />
 
       {username !== "" && (
