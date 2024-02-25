@@ -1,5 +1,5 @@
 // Test ID: IIDSAT
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useFetcher, useLoaderData } from "react-router-dom";
 
 import OrderItem from "./OrderItem";
@@ -10,11 +10,14 @@ import {
   formatCurrency,
   formatDate,
 } from "../../utils/helpers";
+import Button from "../../ui/Button";
 
 function Order() {
   const order = useLoaderData();
 
   const fetcher = useFetcher();
+
+  const [isCopied, setIsCopied] = useState(false);
 
   useEffect(
     function () {
@@ -23,7 +26,6 @@ function Order() {
     [fetcher],
   );
 
-  // Everyone can search for all orders, so for privacy reasons it's exclude names or address, these are only for the restaurant staff
   const {
     id,
     status,
@@ -37,12 +39,28 @@ function Order() {
 
   const deliveryIn = calcMinutesLeft(estimatedDelivery);
 
+  async function handleCopyToClipboard() {
+    try {
+      await navigator.clipboard.writeText(id.toString());
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 5000); 
+    } catch (err) {
+      console.error("Failed to copy", err);
+    }
+  }
+
   return (
     <div className=" space-y-6 px-5 py-4 sm:space-y-4 ">
-      <div className="item-center flex flex-wrap justify-between gap-2 sm:space-x-6">
+      <div className="flex flex-wrap items-baseline justify-between gap-2 sm:space-x-6">
         <h2 className="text-xl font-semibold">Order {id}</h2>
-
-        <div className="space-x-2 mt-3 ">
+        <Button
+          onClick={handleCopyToClipboard}
+          type={!isCopied ? "small" : "disabled"}
+          disabled={isCopied}
+        >
+          {isCopied ? "Copied" : "Copy Order"}
+        </Button>
+        <div className="mt-3 space-x-2 ">
           {priority && (
             <span className="rounded-full bg-red-500 px-3 py-1 text-sm font-semibold uppercase tracking-wide text-red-50 ">
               Priority
@@ -55,8 +73,7 @@ function Order() {
       </div>
 
       <h3 className="text-l font-medium">
-        <span className="font-semibold">Customer</span>{" "}
-        {customer}
+        <span className="font-semibold">Customer</span> {customer}
       </h3>
 
       <div className="flex flex-wrap items-center justify-between gap-2 bg-stone-200 px-6 py-5">

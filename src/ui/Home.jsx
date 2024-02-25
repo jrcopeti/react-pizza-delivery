@@ -8,29 +8,33 @@ function Home() {
   const backgroundImageUrl = "src/assets/pizza-delivery-homepage.jpg";
 
   return (
-    <div className="mx-4 my-10 space-y-4 rounded-md bg-slate-100/80 p-5 text-center sm:my-16 sm:space-y-6 ">
+    <>
       <img
         src={backgroundImageUrl}
         alt="Pizza delivery"
-        className="absolute inset-0 -z-10 h-full w-full object-cover"
+        className="absolute inset-0 -z-10 h-full w-full object-cover "
       />
-
-      <h1 className="text-center text-xl font-semibold md:text-3xl">
-        Pizza Delivery Co.
+      <div className="  m-5 space-y-4 rounded-md bg-amber-50/40 p-6 text-center sm:mb-8 sm:mt-8 sm:space-y-6 ">
+        <h1 className="  text-xl tracking-widest md:text-3xl ">
+          <span className=" rounded-md bg-amber-200/70 p-2 font-extrabold  ">
+            Pizza Delivery Co.
+          </span>
+        </h1>
         <br />
-        <br />
-        <span className="text-orange-400  ">
+        <span className=" bg-none text-stone-800 text-center  text-xl font-extrabold tracking-normal md:text-3xl">
           Straight out of the oven, directly to you.
         </span>
-      </h1>
-      {username === "" ? (
-        <CreateUser />
-      ) : (
-        <Button to="/menu" type="primary">
-          Continue ordering, {username}
-        </Button>
-      )}
-    </div>
+        <br />
+
+        {username === "" ? (
+          <CreateUser />
+        ) : (
+          <Button to="/menu" type="primary">
+            Continue ordering, {username}
+          </Button>
+        )}
+      </div>
+    </>
   );
 }
 
