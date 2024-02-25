@@ -5,7 +5,7 @@ import Button from "./Button";
 function Home() {
   const username = useSelector((state) => state.user.username);
 
-  const backgroundImageUrl = "src/assets/pizza-delivery-homepage.jpg";
+  const backgroundImageUrl = "/public/pizza-delivery-homepage.jpg";
 
   return (
     <>
@@ -21,7 +21,7 @@ function Home() {
           </span>
         </h1>
         <br />
-        <span className=" bg-none text-stone-800 text-center  text-xl font-extrabold tracking-normal md:text-3xl">
+        <span className=" bg-none text-center text-xl  font-extrabold tracking-normal text-stone-800 md:text-3xl">
           Straight out of the oven, directly to you.
         </span>
         <br />

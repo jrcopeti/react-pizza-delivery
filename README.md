@@ -2,7 +2,7 @@
 
 Welcome to Pizza Delivery Co., a web application delivering a consistent pizza ordering experience.
 
-![Screenshot](/src/assets/screenshot-1.png)
+![Screenshot](/public/screenshot-1.png)
 
 Built in React, the goal of this project is to practice Redux as a state management tool. React Query for create seamless page transitions and API integration as well.
 Tailwind CSS is used for styling the application
