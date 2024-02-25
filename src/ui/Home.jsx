@@ -22,7 +22,7 @@ function Home() {
         </h1>
         <br />
         <span className=" bg-none text-center text-xl  font-extrabold tracking-normal text-stone-800 md:text-3xl">
-          Straight out of the oven, directly to you.
+          Out of the oven, directly to you.
         </span>
         <br />
 
