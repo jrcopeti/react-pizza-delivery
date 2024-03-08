@@ -5,19 +5,18 @@ import { useEffect, useState } from "react";
 import IsLoading from "./IsLoading";
 
 function Home() {
-  const heroLowResolution = "/hero-low-resolution.jpeg";
   const hero = "/hero.jpg";
 
-  const [img, setImg] = useState(heroLowResolution);
+  const [img, setImg] = useState(null);
   const [imgLoaded, setImgLoaded] = useState(false);
 
   const username = useSelector((state) => state.user.username);
 
   useEffect(() => {
-    const img = new Image();
-    img.src = hero;
-    img.onload = () => {
-      setImg(img.src);
+    const LoadingImg = new Image();
+    LoadingImg.src = hero;
+    LoadingImg.onload = () => {
+      setImg(LoadingImg.src);
       setImgLoaded(true);
     };
   }, []);
