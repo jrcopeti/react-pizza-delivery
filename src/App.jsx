@@ -1,4 +1,5 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Suspense, lazy } from "react";
 
 import Menu, { loader as menuLoader } from "./features/menu/Menu";
 
@@ -10,9 +11,10 @@ import { action as updateOrderAction } from "./features/order/UpdateOrder";
 
 import Cart from "./features/cart/Cart";
 
-import Home from "./ui/Home";
+const Home = lazy(() => import("./ui/Home"));
 import AppLayout from "./ui/AppLayout";
 import Error from "./ui/Error";
+import IsLoading from "./ui/IsLoading";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +24,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: (
+          <Suspense fallback={<IsLoading type="homepage" />}>
+            <Home />,
+          </Suspense>
+        ),
       },
       {
         path: "/menu",
