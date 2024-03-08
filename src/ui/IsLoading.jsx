@@ -1,7 +1,13 @@
-function IsLoading() {
+function IsLoading({ type }) {
   return (
-    <div className="absolute bg-slate-200/20 inset-0 backdrop-blur-sm flex items-center justify-center">
-      <div className="loader"></div>
+    <div
+      className={
+        type === "homepage"
+          ? "absolute inset-0 -z-10 flex h-full w-full items-center justify-center bg-hero-pattern bg-cover bg-center bg-no-repeat object-cover backdrop-blur-sm"
+          : "absolute inset-0 flex items-center justify-center bg-slate-200/20 backdrop-blur-sm"
+      }
+    >
+      <div className={type === "homepage" ? "loader-white" : "loader"}></div>
     </div>
   );
 }

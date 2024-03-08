@@ -5,18 +5,17 @@ import { useEffect, useState } from "react";
 import IsLoading from "./IsLoading";
 
 function Home() {
-  const backgroundImageUrlLowResolution =
-    "/pizza-delivery-homepage-low-resolution-small.jpeg";
-  const backgroundImageUrl = "/pizza-delivery-homepage.jpg";
+  const heroLowResolution = "/hero-low-resolution.jpeg";
+  const hero = "/hero.jpg";
 
-  const [img, setImg] = useState(backgroundImageUrlLowResolution);
+  const [img, setImg] = useState(heroLowResolution);
   const [imgLoaded, setImgLoaded] = useState(false);
 
   const username = useSelector((state) => state.user.username);
 
   useEffect(() => {
     const img = new Image();
-    img.src = backgroundImageUrl;
+    img.src = hero;
     img.onload = () => {
       setImg(img.src);
       setImgLoaded(true);
@@ -24,14 +23,13 @@ function Home() {
   }, []);
 
   if (!imgLoaded) {
-    return <IsLoading />;
+    return <IsLoading type="homepage" />;
   }
 
   return (
     <>
       <img
         src={img}
-        loading="eager"
         alt="Pizza delivery"
         className="absolute inset-0 -z-10 h-full w-full object-cover "
       />
