@@ -3,13 +3,13 @@
 https://pizzadeliveryco.netlify.app/
 
 Welcome to Pizza Delivery Co., a web application delivering a consistent pizza ordering experience.
+From menu browsing to real-time delivery tracking, We've got it all covered.
 
 ![Screenshot](/public/screenshot-1.png)
 
-Built in React, the goal of this project is to practice Redux as a state management tool. React Query for create seamless page transitions and API integration as well.
-Tailwind CSS is used for styling the application
+Built in React, the goal of this project is to practice Redux as a state management tool. React Query was used for creating seamless page transitions and API integration as well.
+Tailwind CSS was the choice for styling the application.
 
-From menu browsing to real-time delivery tracking, We've got it all covered.
 
 ## Features
 
