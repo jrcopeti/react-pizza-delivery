@@ -7,7 +7,7 @@ function Home() {
   const hero = "/hero.jpg";
   const heroLowRes = "/hero-low-resolution.jpeg";
 
-  const [img, setImg] = useState(heroLowRes);
+  const [isHeroHighResLoaded, setIsHeroHighResLoaded] = useState(false);
 
   const username = useSelector((state) => state.user.username);
 
@@ -15,17 +15,24 @@ function Home() {
     const LoadingImg = new Image();
     LoadingImg.src = hero;
     LoadingImg.onload = () => {
-      setImg(LoadingImg.src);
-
+      setIsHeroHighResLoaded(true);
     };
   }, []);
 
   return (
     <>
       <img
-        src={img}
+        src={heroLowRes}
         alt="Pizza delivery"
-        className="absolute inset-0 -z-10 h-full w-full object-cover "
+        className={`absolute inset-0 -z-10 h-full w-full object-cover transition-opacity duration-[2000ms] ease-in-out ${
+          isHeroHighResLoaded ? "opacity-0" : "opacity-100"
+        }`}
+      />
+
+      <img
+        src={hero}
+        alt="Pizza delivery"
+        className="absolute inset-0 -z-10 h-full w-full object-cover opacity-100 transition-opacity duration-[2000ms] ease-in-out"
       />
       <div className="  m-5 space-y-4 rounded-md bg-amber-50/40 p-6 text-center sm:mb-8 sm:mt-8 sm:space-y-6 ">
         <h1 className="  text-xl tracking-widest md:text-3xl ">
