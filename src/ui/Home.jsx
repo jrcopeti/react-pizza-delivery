@@ -2,13 +2,12 @@ import { useSelector } from "react-redux";
 import CreateUser from "../features/user/CreateUser";
 import Button from "./Button";
 import { useEffect, useState } from "react";
-import IsLoading from "./IsLoading";
 
 function Home() {
   const hero = "/hero.jpg";
+  const heroLowRes = "/hero-low-resolution.jpeg";
 
-  const [img, setImg] = useState(null);
-  const [imgLoaded, setImgLoaded] = useState(false);
+  const [img, setImg] = useState(heroLowRes);
 
   const username = useSelector((state) => state.user.username);
 
@@ -17,13 +16,9 @@ function Home() {
     LoadingImg.src = hero;
     LoadingImg.onload = () => {
       setImg(LoadingImg.src);
-      setImgLoaded(true);
+
     };
   }, []);
-
-  if (!imgLoaded) {
-    return <IsLoading type="homepage" />;
-  }
 
   return (
     <>
