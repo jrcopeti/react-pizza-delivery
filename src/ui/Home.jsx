@@ -1,16 +1,37 @@
 import { useSelector } from "react-redux";
 import CreateUser from "../features/user/CreateUser";
 import Button from "./Button";
+import { useEffect, useState } from "react";
+import IsLoading from "./IsLoading";
 
 function Home() {
+  const backgroundImageUrlLowResolution =
+    "/pizza-delivery-homepage-low-resolution-small.jpeg";
+  const backgroundImageUrl = "/pizza-delivery-homepage.jpg";
+
+  const [img, setImg] = useState(backgroundImageUrlLowResolution);
+  const [imgLoaded, setImgLoaded] = useState(false);
+
   const username = useSelector((state) => state.user.username);
 
-  const backgroundImageUrl = "/pizza-delivery-homepage.jpg";
+  useEffect(() => {
+    const img = new Image();
+    img.src = backgroundImageUrl;
+    img.onload = () => {
+      setImg(img.src);
+      setImgLoaded(true);
+    };
+  }, []);
+
+  if (!imgLoaded) {
+    return <IsLoading />;
+  }
 
   return (
     <>
       <img
-        src={backgroundImageUrl}
+        src={img}
+        loading="eager"
         alt="Pizza delivery"
         className="absolute inset-0 -z-10 h-full w-full object-cover "
       />
