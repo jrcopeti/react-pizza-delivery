@@ -46,17 +46,21 @@ export const getCartItems = (state) => state.cart.cart;
 export const getTotalCartQuantity = createSelector(
   [getCartItems],
   (cartItems) =>
-    cartItems.reduce((sumQuantity, item) => sumQuantity + item.quantity, 0),
+    cartItems?.reduce((sumQuantity, item) => sumQuantity + item.quantity, 0) ??
+    0,
 );
 
-export const getTotalCartPrice = createSelector([getCartItems], (cartItems) =>
-  cartItems.reduce((sumPrice, item) => sumPrice + item.totalPrice, 0),
+export const getTotalCartPrice = createSelector(
+  [getCartItems],
+  (cartItems) =>
+    cartItems?.reduce((sumPrice, item) => sumPrice + item.totalPrice, 0) ?? 0,
 );
 
 export const getCurrentQuantityById = (id) =>
   createSelector(
     [getCartItems],
-    (cartItems) => cartItems.find((item) => item.pizzaId === id)?.quantity ?? 0,
+    (cartItems) =>
+      cartItems?.find((item) => item.pizzaId === id)?.quantity ?? 0,
   );
 
 export default cartSlice.reducer;
