@@ -1,38 +1,31 @@
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+
 import CreateUser from "../features/user/CreateUser";
 import Button from "./Button";
-import { useEffect, useState } from "react";
+
+import Hero from "/hero.jpg";
+import HeroLowRes from "/hero-low-resolution.jpeg";
 
 function Home() {
-  const hero = "/hero.jpg";
-  const heroLowRes = "/hero-low-resolution.jpeg";
-
-  const [isHeroHighResLoaded, setIsHeroHighResLoaded] = useState(false);
+  const [isHeroLoaded, setIsHeroLoaded] = useState(false);
 
   const username = useSelector((state) => state.user.username);
 
   useEffect(() => {
     const LoadingImg = new Image();
-    LoadingImg.src = hero;
+    LoadingImg.src = Hero;
     LoadingImg.onload = () => {
-      setIsHeroHighResLoaded(true);
+      setIsHeroLoaded(true);
     };
   }, []);
 
   return (
     <>
       <img
-        src={heroLowRes}
+        src={isHeroLoaded ? Hero : HeroLowRes}
         alt="Pizza delivery"
-        className={`absolute inset-0 -z-10 h-full w-full object-cover transition-opacity duration-[2000ms] ease-in-out ${
-          isHeroHighResLoaded ? "opacity-0" : "opacity-100"
-        }`}
-      />
-
-      <img
-        src={hero}
-        alt="Pizza delivery"
-        className="absolute inset-0 -z-10 h-full w-full object-cover opacity-100 transition-opacity duration-[2000ms] ease-in-out"
+        className="absolute inset-0 -z-10 h-full w-full object-cover"
       />
       <div className="  m-5 space-y-4 rounded-md bg-amber-50/40 p-6 text-center sm:mb-8 sm:mt-8 sm:space-y-6 ">
         <h1 className="  text-xl tracking-widest md:text-3xl ">
